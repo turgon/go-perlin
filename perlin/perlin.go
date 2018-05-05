@@ -71,35 +71,40 @@ func lerp(t, a, b float64) float64 {
 func grad(hash int, x, y, z float64) float64 {
 	h := hash & 15
 
-	var u, v, r float64
-
-	if h < 8 {
-		u = x
-	} else {
-		u = y
+	switch h {
+	case 0:
+		return x + y
+	case 1:
+		return -x + y
+	case 2:
+		return x - y
+	case 3:
+		return -x - y
+	case 4:
+		return x + z
+	case 5:
+		return -x + z
+	case 6:
+		return x - z
+	case 7:
+		return -x - z
+	case 8:
+		return y + z
+	case 9:
+		return -y + z
+	case 10:
+		return y - z
+	case 11:
+		return -y - z
+	case 12:
+		return y + x
+	case 13:
+		return -y + z
+	case 14:
+		return y - x
+	case 15:
+		return -y - z
 	}
 
-	if h < 4 {
-		v = y
-	} else {
-		if h == 12 || h == 14 {
-			v = x
-		} else {
-			v = z
-		}
-	}
-
-	if h&1 == 0 {
-		r = u
-	} else {
-		r = -u
-	}
-
-	if h&2 == 0 {
-		r = r + v
-	} else {
-		r = r - v
-	}
-
-	return r
+	return 0
 }
