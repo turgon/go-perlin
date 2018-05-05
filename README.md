@@ -1,5 +1,9 @@
 # go-perlin
-Perlin noise generator
+Improved Perlin noise generator
+
+# License
+
+No license! This code is a Go implementation of Perlin's copyrighted Improved Noise algorithm. Please assume you may NOT use it for commercial purposes.
 
 # Resources
 
